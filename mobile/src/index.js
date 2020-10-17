@@ -1,8 +1,19 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
-const App = () => {
-  return <View />;
-};
+import { NavigationContainer } from '@react-navigation/native';
+
+import './config/ReactotronConfig';
+
+import Routes from './routes';
+
+const App = () => (
+  <NavigationContainer>
+    <Routes />
+  </NavigationContainer>
+);
+
+console.tron.log('Hello World');
 
 export default App;
