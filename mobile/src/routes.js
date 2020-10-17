@@ -7,7 +7,11 @@ import SignUp from './pages/SignUp';
 const Auth = createStackNavigator();
 
 const Routes = () => (
-  <Auth.Navigator screenOptions={{}}>
+  <Auth.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+  >
     <Auth.Screen name="SignIn" component={SignIn} />
     <Auth.Screen name="SignUp" component={SignUp} />
   </Auth.Navigator>
