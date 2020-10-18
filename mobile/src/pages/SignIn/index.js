@@ -17,8 +17,8 @@ const SignIn = () => {
 
         <Title>Faça seu Login</Title>
 
-        <Input />
-        <Input />
+        <Input icon="call" placeholder="Digite seu nome" />
+
         <Button>Entrar</Button>
       </Container>
     </>

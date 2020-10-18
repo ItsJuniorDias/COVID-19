@@ -13,3 +13,12 @@ const Button = ({ children, loading, ...rest }) => {
 };
 
 export default Button;
+
+Button.propTypes = {
+  children: PropTypes.string.isRequired,
+  loading: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  loading: false,
+};
