@@ -11,7 +11,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   background-color: #0028bd;
   justify-content: center;
   align-items: center;
-  margin-top: -90px;
+  margin-top: -60px;
   padding: 0 30px;
 `;
 

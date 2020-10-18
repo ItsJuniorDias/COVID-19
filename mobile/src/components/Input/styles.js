@@ -7,6 +7,8 @@ export const Container = styled.View`
   background: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin-bottom: 8px;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const TInput = styled.TextInput.attrs({
@@ -16,4 +18,5 @@ export const TInput = styled.TextInput.attrs({
   color: #fff;
   font-size: 16px;
   font-family: 'NunitoSans-Regular';
+  margin-left: 5px;
 `;
