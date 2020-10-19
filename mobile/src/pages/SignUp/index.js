@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, Alert } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 
 import api from '../../services/api';
 
@@ -37,6 +38,32 @@ const SignUp = ({ navigation }) => {
 
     loadCountry();
   }, []);
+
+  const handleSubmit = async () => {
+    try {
+      const response = await firestore()
+        .collection('users')
+        .add({ name, email, password, selectedValue });
+
+      console.tron.log(response);
+
+      Alert.alert(
+        'Cadastro realizado com sucesso',
+        'Aguarde alguns instante...'
+      );
+
+      const redirect = () => {
+        navigation.navigate('Home');
+      };
+
+      setInterval(redirect, 3000);
+    } catch (err) {
+      Alert.alert(
+        'Falha no cadastro',
+        'Ocorreu um erro ao fazer o cadastro, tente outras credenciais'
+      );
+    }
+  };
 
   return (
     <>
@@ -86,7 +113,7 @@ const SignUp = ({ navigation }) => {
               {country.map((item, index) => (
                 <InputOptions.Item
                   label={item.name}
-                  value={index}
+                  value={item.name}
                   key={index}
                 />
               ))}
@@ -94,7 +121,7 @@ const SignUp = ({ navigation }) => {
           </ContainerOptions>
         </Form>
 
-        <Button>Entrar</Button>
+        <Button onPress={handleSubmit}>Entrar</Button>
 
         <TextSignUp onPress={() => navigation.navigate('SignIn')}>
           <TextLink>Voltar</TextLink>
