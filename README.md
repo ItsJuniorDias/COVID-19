@@ -20,9 +20,4 @@ $ cd mobile
 $ yarn android 
 ```
 
-iOS
 
-```
-$ cd mobile 
-$ yarn ios 
-```
