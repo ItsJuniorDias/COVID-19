@@ -1,13 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { Container, TitleDescription, ImageTips } from './styles';
+import { Container, ImageTips, Description } from './styles';
 
 const PreventionsTips = ({ image, description }) => {
   return (
     <Container>
-      <ImageTips source={{ uri: `${image}` }} />
-      <TitleDescription>{description}</TitleDescription>
+      <ImageTips source={image} />
+      <Description>{description}</Description>
     </Container>
   );
 };

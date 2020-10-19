@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 
+import { SafeAreaView } from 'react-native';
+
+import teste from '../../assets/teste.png';
+
 export const ContainerHeader = styled(LinearGradient).attrs({
   colors: ['#021B79', '#0575E6'],
 })`
@@ -11,7 +15,7 @@ export const ContainerHeader = styled(LinearGradient).attrs({
   border-bottom-right-radius: 40px;
 `;
 
-export const Content = styled.View`
+export const Content = styled(SafeAreaView)`
   background-color: #e5e5e5;
   flex: 1;
 `;
@@ -69,4 +73,31 @@ export const PreventionTitle = styled.Text`
   color: #021b79;
   font-family: 'NunitoSans-SemiBold';
   margin-top: 12px;
+`;
+
+export const ContentTips = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const ContainerTest = styled.ImageBackground`
+  flex: 1;
+  justify-content: center;
+  height: 160px;
+  width: auto;
+  padding-left: 120px;
+  padding-right: 15px;
+  background-color: blue;
+`;
+
+export const TitleTest = styled.Text`
+  font-size: 16px;
+  color: #f4ede8;
+  font-family: 'NunitoSans-SemiBold';
+`;
+
+export const TitleDescription = styled.Text`
+  font-size: 14px;
+  color: #f4ede8;
+  font-family: 'NunitoSans-Regular';
 `;
