@@ -26,7 +26,7 @@ const SignIn = ({ navigation }) => {
       try {
         const user = await auth().signInWithEmailAndPassword(email, password);
 
-        console.log(user);
+        console.tron.log(user);
 
         navigation.navigate('Home');
       } catch (err) {

@@ -1,7 +1,11 @@
-import React from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, { useState, useEffect } from 'react';
 import { View, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+
+import api from '../../services/api';
 
 import ButtonInfo from '../../components/ButtonInfo';
 import InfoCountry from '../../components/InfoCountry';
@@ -34,6 +38,22 @@ import {
 } from './styles';
 
 const Home = ({ navigation }) => {
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    async function loadUser() {
+      const response = await firestore()
+        .collection('users')
+        .doc('rZU7NXlYidWYDRuX15dH')
+        .get();
+      console.tron.log(response._data);
+
+      setUser(response._data);
+    }
+
+    loadUser();
+  });
+
   const handleSignOut = async () => {
     await auth()
       .signOut()

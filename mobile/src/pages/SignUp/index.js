@@ -54,7 +54,7 @@ const SignUp = ({ navigation }) => {
 
         Alert.alert(
           'Cadastro realizado com sucesso',
-          'E um prazer ter você aqui'
+          'E um prazer ter você aqui.'
         );
 
         navigation.navigate('Home');
