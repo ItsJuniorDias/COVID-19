@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar, Alert } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 import api from '../../services/api';
 
@@ -25,7 +26,7 @@ const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [country, setCountry] = useState([]);
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('');
 
   useEffect(() => {
     async function loadCountry() {
@@ -41,22 +42,20 @@ const SignUp = ({ navigation }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await firestore()
+      const createUser = await firestore()
         .collection('users')
-        .add({ name, email, password, selectedValue });
+        .add({ name, email, password, selectedCountry });
 
-      console.tron.log(response);
+      await auth().createUserWithEmailAndPassword(email, password);
+
+      console.tron.log(createUser);
 
       Alert.alert(
         'Cadastro realizado com sucesso',
-        'Aguarde alguns instante...'
+        'E um prazer ter você aqui'
       );
 
-      const redirect = () => {
-        navigation.navigate('Home');
-      };
-
-      setInterval(redirect, 3000);
+      navigation.navigate('Home');
     } catch (err) {
       Alert.alert(
         'Falha no cadastro',
@@ -104,9 +103,9 @@ const SignUp = ({ navigation }) => {
 
           <ContainerOptions>
             <InputOptions
-              selectedValue={selectedValue}
+              selectedValue={selectedCountry}
               onValueChange={(itemValue, itemIndex) =>
-                setSelectedValue(itemValue)
+                setSelectedCountry(itemValue)
               }
             >
               <InputOptions.Item label="Selecione seu país" value="" />
