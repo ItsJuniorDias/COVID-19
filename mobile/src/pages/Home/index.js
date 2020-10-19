@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import auth from '@react-native-firebase/auth';
 
 import ButtonInfo from '../../components/ButtonInfo';
 import InfoCountry from '../../components/InfoCountry';
@@ -32,7 +33,15 @@ import {
   TitleDescription,
 } from './styles';
 
-const Home = () => {
+const Home = ({ navigation }) => {
+  const handleSignOut = async () => {
+    await auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+
+    navigation.navigate('SignIn');
+  };
+
   return (
     <>
       <Content>
@@ -40,7 +49,7 @@ const Home = () => {
           <ContainerHeader>
             <ContainerTitle>
               <TitleName>Alexandre Jr</TitleName>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handleSignOut}>
                 <Icon name="exit-to-app" size={30} color="#f4ede8" />
               </TouchableOpacity>
             </ContainerTitle>

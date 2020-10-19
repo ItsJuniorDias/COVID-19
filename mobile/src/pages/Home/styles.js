@@ -87,7 +87,6 @@ export const ContainerTest = styled.ImageBackground`
   width: auto;
   padding-left: 120px;
   padding-right: 15px;
-  background-color: blue;
 `;
 
 export const TitleTest = styled.Text`
