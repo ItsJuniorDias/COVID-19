@@ -1,5 +1,6 @@
-import React from 'react';
-import { StatusBar } from 'react-native';
+import React, { useState } from 'react';
+import { StatusBar, Alert } from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 import {
   Container,
@@ -16,6 +17,24 @@ import Button from '../../components/Button';
 import logoImg from '../../assets/logo.png';
 
 const SignIn = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async () => {
+    try {
+      const user = await auth().signInWithEmailAndPassword(email, password);
+
+      console.log(user);
+
+      navigation.navigate('Home');
+    } catch (err) {
+      Alert.alert(
+        'Falha na autenticação',
+        'Ocorreu um erro ao fazer login, cheque as credenciais'
+      );
+    }
+  };
+
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#0028bd" />
@@ -31,6 +50,8 @@ const SignIn = ({ navigation }) => {
             keyboardType="email-address"
             autoCorrect={false}
             placeholder="Digite seu email"
+            value={email}
+            onChangeText={(email) => setEmail(email)}
           />
 
           <FormInput
@@ -38,10 +59,12 @@ const SignIn = ({ navigation }) => {
             autoCompleteType="password"
             placeholder="Digite sua senha"
             secureTextEntry
+            value={password}
+            onChangeText={(password) => setPassword(password)}
           />
         </Form>
 
-        <Button>Entrar</Button>
+        <Button onPress={handleSubmit}>Entrar</Button>
 
         <TextSignUp onPress={() => navigation.navigate('SignUp')}>
           <TextLink>Crie sua conta</TextLink>
