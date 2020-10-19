@@ -22,17 +22,19 @@ const SignIn = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   const handleSubmit = async () => {
-    try {
-      const user = await auth().signInWithEmailAndPassword(email, password);
+    if (email && password !== null) {
+      try {
+        const user = await auth().signInWithEmailAndPassword(email, password);
 
-      console.log(user);
+        console.log(user);
 
-      navigation.navigate('Home');
-    } catch (err) {
-      Alert.alert(
-        'Falha na autenticação',
-        'Ocorreu um erro ao fazer login, cheque as credenciais'
-      );
+        navigation.navigate('Home');
+      } catch (err) {
+        Alert.alert(
+          'Falha na autenticação',
+          'Ocorreu um erro ao fazer login, cheque as credenciais'
+        );
+      }
     }
   };
 

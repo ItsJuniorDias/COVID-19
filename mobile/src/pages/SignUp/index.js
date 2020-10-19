@@ -42,26 +42,28 @@ const SignUp = ({ navigation }) => {
   }, []);
 
   const handleSubmit = async () => {
-    try {
-      const createUser = await firestore()
-        .collection('users')
-        .add({ name, email, password, selectedCountry });
+    if (name && email && password && selectedCountry !== null) {
+      try {
+        const createUser = await firestore()
+          .collection('users')
+          .add({ name, email, password, selectedCountry });
 
-      await auth().createUserWithEmailAndPassword(email, password);
+        await auth().createUserWithEmailAndPassword(email, password);
 
-      console.tron.log(createUser);
+        console.tron.log(createUser);
 
-      Alert.alert(
-        'Cadastro realizado com sucesso',
-        'E um prazer ter você aqui'
-      );
+        Alert.alert(
+          'Cadastro realizado com sucesso',
+          'E um prazer ter você aqui'
+        );
 
-      navigation.navigate('Home');
-    } catch (err) {
-      Alert.alert(
-        'Falha no cadastro',
-        'Ocorreu um erro ao fazer o cadastro, tente outras credenciais'
-      );
+        navigation.navigate('Home');
+      } catch (err) {
+        Alert.alert(
+          'Falha no cadastro',
+          'Ocorreu um erro ao fazer o cadastro, tente outras credenciais'
+        );
+      }
     }
   };
 
