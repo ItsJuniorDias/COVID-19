@@ -10,7 +10,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   behavior: 'padding',
 })`
   flex: 1;
-  background-color: #0028bd;
+
   justify-content: center;
   align-items: center;
   margin-top: -60px;
@@ -18,6 +18,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 `;
 
 export const ImageLogo = styled.Image`
+  margin-top: 25px;
   width: 130px;
   height: 130px;
 `;

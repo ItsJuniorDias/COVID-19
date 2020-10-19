@@ -8,7 +8,6 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   behavior: 'padding',
 })`
   flex: 1;
-  background-color: #0028bd;
   justify-content: center;
   align-items: center;
   margin-top: -90px;

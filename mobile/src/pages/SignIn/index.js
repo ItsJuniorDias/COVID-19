@@ -13,6 +13,7 @@ import {
 } from './styles';
 
 import Button from '../../components/Button';
+import Background from '../../components/Background';
 
 import logoImg from '../../assets/logo.png';
 
@@ -37,39 +38,41 @@ const SignIn = ({ navigation }) => {
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#0028bd" />
-      <Container>
-        <ImageLogo source={logoImg} />
+      <StatusBar barStyle="light-content" backgroundColor="#021B79" />
+      <Background>
+        <Container>
+          <ImageLogo source={logoImg} />
 
-        <Title>Faça seu Login</Title>
+          <Title>Faça seu Login</Title>
 
-        <Form>
-          <FormInput
-            autoCapitalize="none"
-            icon="mail-outline"
-            keyboardType="email-address"
-            autoCorrect={false}
-            placeholder="Digite seu email"
-            value={email}
-            onChangeText={(email) => setEmail(email)}
-          />
+          <Form>
+            <FormInput
+              autoCapitalize="none"
+              icon="mail-outline"
+              keyboardType="email-address"
+              autoCorrect={false}
+              placeholder="Digite seu email"
+              value={email}
+              onChangeText={(email) => setEmail(email)}
+            />
 
-          <FormInput
-            icon="lock-outline"
-            autoCompleteType="password"
-            placeholder="Digite sua senha"
-            secureTextEntry
-            value={password}
-            onChangeText={(password) => setPassword(password)}
-          />
-        </Form>
+            <FormInput
+              icon="lock-outline"
+              autoCompleteType="password"
+              placeholder="Digite sua senha"
+              secureTextEntry
+              value={password}
+              onChangeText={(password) => setPassword(password)}
+            />
+          </Form>
 
-        <Button onPress={handleSubmit}>Entrar</Button>
+          <Button onPress={handleSubmit}>Entrar</Button>
 
-        <TextSignUp onPress={() => navigation.navigate('SignUp')}>
-          <TextLink>Crie sua conta</TextLink>
-        </TextSignUp>
-      </Container>
+          <TextSignUp onPress={() => navigation.navigate('SignUp')}>
+            <TextLink>Crie sua conta</TextLink>
+          </TextSignUp>
+        </Container>
+      </Background>
     </>
   );
 };

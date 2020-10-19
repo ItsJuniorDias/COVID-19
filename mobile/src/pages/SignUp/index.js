@@ -18,6 +18,7 @@ import {
 } from './styles';
 
 import Button from '../../components/Button';
+import Background from '../../components/Background';
 
 import logoImg from '../../assets/logo.png';
 
@@ -66,66 +67,68 @@ const SignUp = ({ navigation }) => {
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#0028bd" />
-      <Container>
-        <ImageLogo source={logoImg} />
+      <StatusBar barStyle="light-content" backgroundColor="#021B79" />
+      <Background>
+        <Container>
+          <ImageLogo source={logoImg} />
 
-        <Title>Faça seu Login</Title>
+          <Title>Faça seu Login</Title>
 
-        <Form>
-          <FormInput
-            autoCapitalize="none"
-            icon="face"
-            autoCorrect={false}
-            value={name}
-            onChangeText={(name) => setName(name)}
-            placeholder="Nome completo"
-          />
-          <FormInput
-            autoCapitalize="none"
-            icon="mail-outline"
-            keyboardType="email-address"
-            autoCorrect={false}
-            value={email}
-            onChangeText={(email) => setEmail(email)}
-            autoCorrect={false}
-            placeholder="Digite seu email"
-          />
+          <Form>
+            <FormInput
+              autoCapitalize="none"
+              icon="face"
+              autoCorrect={false}
+              value={name}
+              onChangeText={(name) => setName(name)}
+              placeholder="Nome completo"
+            />
+            <FormInput
+              autoCapitalize="none"
+              icon="mail-outline"
+              keyboardType="email-address"
+              autoCorrect={false}
+              value={email}
+              onChangeText={(email) => setEmail(email)}
+              autoCorrect={false}
+              placeholder="Digite seu email"
+            />
 
-          <FormInput
-            icon="lock-outline"
-            autoCompleteType="password"
-            placeholder="Digite sua senha"
-            secureTextEntry
-            value={password}
-            onChangeText={(password) => setPassword(password)}
-          />
+            <FormInput
+              icon="lock-outline"
+              autoCompleteType="password"
+              placeholder="Digite sua senha"
+              secureTextEntry
+              value={password}
+              onChangeText={(password) => setPassword(password)}
+            />
 
-          <ContainerOptions>
-            <InputOptions
-              selectedValue={selectedCountry}
-              onValueChange={(itemValue, itemIndex) =>
-                setSelectedCountry(itemValue)
-              }
-            >
-              <InputOptions.Item label="Selecione seu país" value="" />
-              {country.map((item, index) => (
-                <InputOptions.Item
-                  label={item.name}
-                  value={item.name}
-                  key={index}
-                />
-              ))}
-            </InputOptions>
-          </ContainerOptions>
-        </Form>
+            <ContainerOptions>
+              <InputOptions
+                selectedValue={selectedCountry}
+                onValueChange={(itemValue, itemIndex) =>
+                  setSelectedCountry(itemValue)
+                }
+              >
+                <InputOptions.Item label="Selecione seu país" value="" />
+                {country.map((item, index) => (
+                  <InputOptions.Item
+                    label={item.name}
+                    value={item.name}
+                    key={index}
+                  />
+                ))}
+              </InputOptions>
+            </ContainerOptions>
+          </Form>
 
-        <Button onPress={handleSubmit}>Entrar</Button>
+          <Button onPress={handleSubmit}>Entrar</Button>
 
-        <TextSignUp onPress={() => navigation.navigate('SignIn')}>
-          <TextLink>Voltar</TextLink>
-        </TextSignUp>
-      </Container>
+          <TextSignUp onPress={() => navigation.navigate('SignIn')}>
+            <TextLink>Voltar</TextLink>
+          </TextSignUp>
+        </Container>
+      </Background>
     </>
   );
 };
