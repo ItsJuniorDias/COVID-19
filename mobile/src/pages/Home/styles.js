@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 export const ContainerHeader = styled(LinearGradient).attrs({
   colors: ['#021B79', '#0575E6'],
 })`
-  flex: 1;
+  flex: 1.1;
   padding: 15px 30px;
   flex-direction: column;
   border-bottom-left-radius: 40px;
@@ -18,6 +18,13 @@ export const ContainerTitle = styled.View`
 
 export const Body = styled.View`
   flex: 2;
+  padding: 20px 30px;
+  background-color: green;
+`;
+
+export const HeaderInfos = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const TitleName = styled.Text`

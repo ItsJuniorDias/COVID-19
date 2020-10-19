@@ -3,7 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import ButtonInfo from '../../components/ButtonInfo';
-import Background from '../../components/Background';
+import InfoCountry from '../../components/InfoCountry';
 
 import {
   ContainerHeader,
@@ -14,6 +14,7 @@ import {
   TitleInfo,
   TextDescriptionInfo,
   ContainerButtonInfo,
+  HeaderInfos,
 } from './styles';
 
 const Home = () => {
@@ -42,7 +43,16 @@ const Home = () => {
         </ContainerTextInfo>
       </ContainerHeader>
 
-      <Body />
+      <Body>
+        <HeaderInfos>
+          <InfoCountry
+            color="#FFB259"
+            title="Afetados"
+            numberCountry="336,851"
+          />
+          <InfoCountry color="#FF5959" title="Mortes" numberCountry="9,620" />
+        </HeaderInfos>
+      </Body>
     </>
   );
 };
