@@ -18,8 +18,8 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 `;
 
 export const ImageLogo = styled.Image`
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
 `;
 
 export const Title = styled.Text`

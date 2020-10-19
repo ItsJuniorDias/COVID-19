@@ -82,6 +82,7 @@ const SignUp = ({ navigation }) => {
                 setSelectedValue(itemValue)
               }
             >
+              <InputOptions.Item label="Selecione seu país" value="" />
               {country.map((item, index) => (
                 <InputOptions.Item
                   label={item.name}
