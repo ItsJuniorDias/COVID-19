@@ -1,4 +1,12 @@
 # COVID-19 🦠
+
+**Tools**
+- **Axios** were used for consumption by Api;
+- **Styled-component** to work with customizable components;
+- **Prop-Types** to define component properties types;
+- **React-Navigation** for navigation between screens;
+- **React-Native Firebase** and **Firestore** for consumption and access to services;
+
  
 **Installing dependencies**
 
