@@ -11,6 +11,11 @@ export const ContainerHeader = styled(LinearGradient).attrs({
   border-bottom-right-radius: 40px;
 `;
 
+export const Content = styled.View`
+  background-color: #e5e5e5;
+  flex: 1;
+`;
+
 export const ContainerTitle = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -19,7 +24,6 @@ export const ContainerTitle = styled.View`
 export const Body = styled.View`
   flex: 2;
   padding: 20px 30px;
-  background-color: green;
 `;
 
 export const HeaderInfos = styled.View`
@@ -56,4 +60,13 @@ export const ContainerButtonInfo = styled.View`
 
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const Prevention = styled.View``;
+
+export const PreventionTitle = styled.Text`
+  font-size: 20px;
+  color: #021b79;
+  font-family: 'NunitoSans-SemiBold';
+  margin-top: 12px;
 `;
