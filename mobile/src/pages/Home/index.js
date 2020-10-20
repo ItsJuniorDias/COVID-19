@@ -40,9 +40,9 @@ import {
 const Home = ({ navigation, route }) => {
   const { userProvider, userSignUp } = route.params;
 
-  console.tron.log(userSignUp);
-
+  const [cases, setCases] = useState([]);
   const [user, setUser] = useState({});
+  console.tron.log(userSignUp);
 
   useEffect(() => {
     async function loadUser() {
@@ -57,14 +57,25 @@ const Home = ({ navigation, route }) => {
         console.tron.log(responseUser);
 
         setUser(responseUser._data);
-        console.tron.log(userDoc);
       }
     }
 
     loadUser();
   }, []);
 
-  console.tron.log(user);
+  useEffect(() => {
+    async function loadInfoCountry() {
+      const response = await api.get('country', {
+        params: { name: `${user.selectedCountry}` },
+      });
+
+      setCases(response.data);
+
+      console.tron.log(response);
+    }
+
+    loadInfoCountry();
+  }, []);
 
   const handleSignOut = async () => {
     await auth()
@@ -112,34 +123,47 @@ const Home = ({ navigation, route }) => {
 
           <Body>
             <HeaderInfos>
-              <InfoCountry
-                color="#FFB259"
-                title="Afetados"
-                numberCountry="336,851"
-              />
-              <InfoCountry
-                color="#FF5959"
-                title="Mortes"
-                numberCountry="9,620"
-              />
+              {cases.map((item, index) => (
+                <>
+                  <InfoCountry
+                    color="#FFB259"
+                    title="Afetados"
+                    numberCountry={item.confirmed}
+                    key={index}
+                  />
+                  <InfoCountry
+                    color="#FF5959"
+                    title="Mortes"
+                    numberCountry={item.deaths}
+                    key={index}
+                  />
+                </>
+              ))}
             </HeaderInfos>
 
             <HeaderInfos>
-              <InfoFooter
-                color="#4CD97B"
-                title="Curados"
-                numberCountry="17,977"
-              />
-              <InfoFooter
-                color="#4DB5FF"
-                title="Ativos"
-                numberCountry="301,251"
-              />
-              <InfoFooter
-                color="#9059FF"
-                title="Graves"
-                numberCountry="8,702"
-              />
+              {cases.map((item, index) => (
+                <>
+                  <InfoFooter
+                    color="#4CD97B"
+                    title="Curados"
+                    numberCountry={item.recovered}
+                    key={index}
+                  />
+                  <InfoFooter
+                    color="#4DB5FF"
+                    title="Ativos"
+                    numberCountry="301,251"
+                    key={index}
+                  />
+                  <InfoFooter
+                    color="#9059FF"
+                    title="Graves"
+                    numberCountry={item.critical}
+                    key={index}
+                  />
+                </>
+              ))}
             </HeaderInfos>
 
             <Prevention>
