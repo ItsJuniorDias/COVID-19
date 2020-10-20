@@ -1,5 +1,7 @@
 # COVID-19 🦠
 
+![4a550fe4-1a43-4754-8d1c-20b70c4dfde0-horz](https://user-images.githubusercontent.com/50254416/96601784-bc7d0080-12c8-11eb-9297-0fd8f43eb5ec.jpg)
+
 **Tools**
 - **Axios** were used for consumption by Api;
 - **Styled-component** to work with customizable components;
