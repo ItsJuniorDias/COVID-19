@@ -91,7 +91,6 @@ const SignUp = ({ navigation }) => {
 
           <Form>
             <FormInput
-              autoCapitalize="none"
               icon="face"
               autoCorrect={false}
               value={name}

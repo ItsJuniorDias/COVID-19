@@ -42,6 +42,7 @@ const Home = ({ navigation, route }) => {
 
   const [cases, setCases] = useState([]);
   const [user, setUser] = useState({});
+
   console.tron.log(userSignUp);
 
   useEffect(() => {
@@ -65,8 +66,12 @@ const Home = ({ navigation, route }) => {
 
   useEffect(() => {
     async function loadInfoCountry() {
+      const { selectedCountry } = user;
+
+      console.tron.log(selectedCountry);
+
       const response = await api.get('country', {
-        params: { name: `${user.selectedCountry}` },
+        params: { name: `${selectedCountry}` },
       });
 
       setCases(response.data);
