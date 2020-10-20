@@ -43,7 +43,23 @@ const Home = ({ navigation, route }) => {
   const [cases, setCases] = useState([]);
   const [user, setUser] = useState({});
 
+  const [name, setName] = useState('Vanderlei');
+
+  const [currentUser, setCurrentUser] = useState({});
+
   console.tron.log(userSignUp);
+
+  useEffect(() => {
+    async function loadUserSign() {
+      const response = auth().currentUser;
+
+      setCurrentUser(response);
+
+      console.tron.log(response);
+    }
+
+    loadUserSign();
+  }, []);
 
   useEffect(() => {
     async function loadUser() {
@@ -55,7 +71,7 @@ const Home = ({ navigation, route }) => {
           .doc(userDoc)
           .get();
 
-        console.tron.log(responseUser);
+        // console.tron.log(responseUser);
 
         setUser(responseUser._data);
       }

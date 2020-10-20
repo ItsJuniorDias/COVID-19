@@ -23,11 +23,26 @@ import Background from '../../components/Background';
 import logoImg from '../../assets/logo.png';
 
 const SignUp = ({ navigation }) => {
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [country, setCountry] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState('');
+
+  const onAuthStateChanged = (user) => {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  };
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+
+    console.tron.log(user);
+    return subscriber; // unsubscribe on unmount
+  }, []);
 
   useEffect(() => {
     async function loadCountry() {
@@ -35,7 +50,7 @@ const SignUp = ({ navigation }) => {
 
       setCountry(response.data);
 
-      console.tron.log(response.data);
+      // console.tron.log(response.data);
     }
 
     loadCountry();
