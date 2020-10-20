@@ -8,6 +8,7 @@
 - **Prop-Types** to define component properties types;
 - **React-Navigation** for navigation between screens;
 - **React-Native Firebase** and **Firestore** for consumption and access to services;
+- **Reactotron** robust debugging tool
 
  
 **Installing dependencies**
