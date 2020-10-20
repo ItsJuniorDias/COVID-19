@@ -48,7 +48,18 @@ const SignUp = ({ navigation }) => {
           .collection('users')
           .add({ name, email, password, selectedCountry });
 
-        await auth().createUserWithEmailAndPassword(email, password);
+        await auth()
+          .createUserWithEmailAndPassword(email, password)
+          .then((userCredentials) => {
+            if (userCredentials.user) {
+              userCredentials.user.updateProfile({
+                displayName: name,
+              });
+            }
+          })
+          .catch(function (error) {
+            console.tron.log(error.message);
+          });
 
         console.tron.log(createUser);
 
@@ -57,7 +68,9 @@ const SignUp = ({ navigation }) => {
           'E um prazer ter você aqui.'
         );
 
-        navigation.navigate('Home');
+        navigation.navigate('Home', {
+          userSignUp: createUser,
+        });
       } catch (err) {
         Alert.alert(
           'Falha no cadastro',

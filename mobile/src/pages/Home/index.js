@@ -37,22 +37,34 @@ import {
   TitleDescription,
 } from './styles';
 
-const Home = ({ navigation }) => {
-  const [user, setUser] = useState([]);
+const Home = ({ navigation, route }) => {
+  const { userProvider, userSignUp } = route.params;
+
+  console.tron.log(userSignUp);
+
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     async function loadUser() {
-      const response = await firestore()
-        .collection('users')
-        .doc('rZU7NXlYidWYDRuX15dH')
-        .get();
-      console.tron.log(response._data);
+      if (userSignUp !== null) {
+        const userDoc = userSignUp._documentPath._parts[1];
 
-      setUser(response._data);
+        const responseUser = await firestore()
+          .collection('users')
+          .doc(userDoc)
+          .get();
+
+        console.tron.log(responseUser);
+
+        setUser(responseUser._data);
+        console.tron.log(userDoc);
+      }
     }
 
     loadUser();
-  });
+  }, []);
+
+  console.tron.log(user);
 
   const handleSignOut = async () => {
     await auth()
@@ -68,7 +80,12 @@ const Home = ({ navigation }) => {
         <ScrollView>
           <ContainerHeader>
             <ContainerTitle>
-              <TitleName>Alexandre Jr</TitleName>
+              {userProvider ? (
+                <TitleName>{userProvider.displayName}</TitleName>
+              ) : (
+                  <TitleName>{user.name}</TitleName>
+                )}
+
               <TouchableOpacity onPress={handleSignOut}>
                 <Icon name="exit-to-app" size={30} color="#f4ede8" />
               </TouchableOpacity>

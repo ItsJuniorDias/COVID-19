@@ -24,11 +24,14 @@ const SignIn = ({ navigation }) => {
   const handleSubmit = async () => {
     if (email && password !== null) {
       try {
-        const user = await auth().signInWithEmailAndPassword(email, password);
+        const users = await auth().signInWithEmailAndPassword(email, password);
 
-        console.tron.log(user);
+        console.tron.log(users);
 
-        navigation.navigate('Home');
+        navigation.navigate('Home', {
+          userProvider: users.user,
+          userSignUp: null,
+        });
       } catch (err) {
         Alert.alert(
           'Falha na autenticação',
